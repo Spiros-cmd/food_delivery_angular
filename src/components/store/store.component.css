@@ -1,0 +1,149 @@
+ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+ul li a{
+  height: 15rem;
+  width: 20rem;
+  border:1px solid whitesmoke;
+  border-radius: 1rem;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #000;
+  background-color: #a5989855;
+}
+li a :hover{
+  opacity: 0.9;
+  cursor: pointer;
+}
+.content{
+  padding: .1rem 1rem;
+  position: relative;
+}
+.favorite{
+  position: absolute;
+  top: .5rem;
+  right: 1rem;
+  font-size: 1.2rem;
+}
+.favorite.not{
+  color: black;
+}
+.star{
+  margin-bottom: .2rem;
+}
+.product-item-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tags{
+  font-size: small;
+}
+.download{
+background-image: url('/assets/andrios.png');
+margin: 0 auto;
+margin-bottom: 30px;
+width: 850px;
+height: 300px;
+display: block;
+justify-content: center;
+float: none;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.download li{
+height: 15px;
+width: 45px;
+}
+.download h1{
+margin-top: 60px;
+margin-left: 20px;
+}
+.download h6{
+margin-top: 20px;
+margin-left: 20px;
+}
+.download li a{
+width: 80px;
+height: 40px;
+}
+div li{
+width: fit-content;
+}
+
+/* .w-100 {
+  width: 100%!important;
+}
+
+.container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+
+.cards {
+  width: calc(100% - 80px);
+  overflow: hidden;
+}
+
+.overflow {
+  position: relative;
+  transition: left 0.5s ease-in-out;
+}
+
+.card {
+  height: 200px;
+  width: 350px;
+  background-color: #e0e1e2;
+  border-radius: 5px;
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+}
+
+.no-right-margin {
+  margin-right: 0px;
+}
+
+.card span {
+  font-size:48px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.left,
+.right {
+  height: 30px;
+  width: 30px;
+  background-color: #0072bc;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.left.disabled, .right.disabled {
+  background-color:#CCC;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+} */
+
+
+
+
+
+
+
