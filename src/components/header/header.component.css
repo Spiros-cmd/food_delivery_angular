@@ -1,0 +1,38 @@
+header{
+  background-color: white;
+  padding: 0;
+  background-image: url("/assets/back.png");
+  background-position: right 50px bottom 60px;
+  background-size: 760px 600px;
+  position: relative;
+  display: block;
+  overflow: auto;
+}
+a{
+  color: red;
+}
+a:hover{
+  color: rgb(255, 157, 0);
+}
+.container{
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+}
+a.logo{
+  font-weight: bold;
+  font-size: x-large;
+  padding: 1em;
+}
+nav ul{
+  list-style-type: none;
+  margin: 0;
+}
+nav ul li a{
+  padding: 1em;
+  display: inline-block;
+}
+.btn{
+  color: white;
+}
