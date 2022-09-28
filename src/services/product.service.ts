@@ -9,6 +9,8 @@ export class ProductService {
 
   private URL = environment.baseURL + "/products";
 
+  private top10 = environment.baseURL + "/products?findTop10Products";
+
   httpOptions ={
     headers: new HttpHeaders({'content-Type1':'application/json'})
   }
@@ -23,4 +25,12 @@ export class ProductService {
     let params = new HttpParams().set("findByStore", id);
     return this.http.get(this.URL, {params});
   }
+
+  getTopTenProducts(){
+    return this.http.get(this.top10);
+  }
+
 }
+
+
+

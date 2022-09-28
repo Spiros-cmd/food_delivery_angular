@@ -1,0 +1,21 @@
+
+<body>
+<div class="container">
+  <h1>Top 10 Products</h1>
+  <div class="row">
+    <div class="col-md-1 mx-auto my-2" *ngFor="let product of products.data">
+      <a class="nav-link" routerLink="localhost:8080/products?findByStore" (click)="findProduct(product.id)"></a>
+      <div class="image">
+        <img src="https://burgerfest.gr/wp-content/uploads/2022/09/Artboard-1-copy-300x300.png" alt="food img">
+      </div>
+      <div class="name-category">
+        <span class="name">{{product.name}} </span>
+        <span class="category">{{product.productCategory}}</span>
+       </div>
+       <div class="price">
+        {{product.price | currency: 'EUR'}}
+       </div>
+    </div>
+  </div>
+</div>
+</body>
