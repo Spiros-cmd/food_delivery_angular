@@ -8,3 +8,11 @@
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to right, rgb(27, 26, 28), rgb(116, 128, 148))
   }
+
+  .fw-bold{
+    color:white;
+  }
+
+  .form-label{
+    color:white;
+  }

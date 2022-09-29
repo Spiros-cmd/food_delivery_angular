@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class SharedService {
 
   id!:number;
+  productId!:number;
   constructor() { }
 
   setId(data: number){
@@ -15,4 +16,6 @@ export class SharedService {
   getId(){
     return this.id;
   }
+
+
 }

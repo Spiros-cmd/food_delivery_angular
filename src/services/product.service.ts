@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -21,6 +22,9 @@ export class ProductService {
 
   FindProductsByStore(id:number) {
     let params = new HttpParams().set("findByStore", id);
-    return this.http.get(this.URL, {params});
+    return this.http.get<any>(this.URL, {params})
+    .pipe(map((res:any)=>{
+      return res;
+    }));
   }
 }
