@@ -5,6 +5,8 @@
       <ul>
         <li>
           <a><button (click)="openDialog()" class="btn btn-outline">Σύνδεση/Εγγραφή</button></a>
+          <a href="" routerLink="/Cart"><div class="cart"><i class="fa fa-shopping-cart lg"></i></div></a>
+          <div style="font-size: 10px;" class="badge bg-danger" *ngIf="!(totalItem === 0)">{{totalItem}}</div>
         </li>
       </ul>
     </nav>
