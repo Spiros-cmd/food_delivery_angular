@@ -16,6 +16,7 @@ import { LoginComponent } from 'src/components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog'
 import { AuthService } from 'src/services/auth.service';
+import { CartComponent } from '../components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AuthService } from 'src/services/auth.service';
     FooterComponent,
     StoreComponent,
     ProductComponent,
-    LoginComponent
+    LoginComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
