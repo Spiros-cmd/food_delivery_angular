@@ -1,5 +1,5 @@
-import { Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
+import { CartService } from 'src/services/cart.service';
 import { ProductService } from 'src/services/product.service';
 import { SharedService } from 'src/shared/shared.service';
 
@@ -10,34 +10,39 @@ import { SharedService } from 'src/shared/shared.service';
 })
 export class ProductComponent implements OnInit {
 
-  allProducts: any;
   products: any;
-  id!:number;
+  storeId!: number;
+  productId!: number;
 
-  constructor(private productService: ProductService,private shared:SharedService, private router:Router) { }
+  constructor(private productService: ProductService, private shared: SharedService, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.getStoreId();
     this.ReadProductByStoreHandler();
   }
 
-  getStoreId(){
-    this.id = this.shared.getId()
+  getStoreId() {
+    this.storeId = this.shared.getId()
   }
 
-  ReadProductHandler() {
-    this.productService.getProducts().subscribe({
-      next: response => this.allProducts = response,
-      error: (error: any) => console.log(error),
-      complete: () => console.log('complete')
-    });
+  getProductId(id: number) {
+    this.productId = id;
+  }
+
+  sendProductId() {
+    this.shared.setId(this.productId);
+  }
+
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
   }
 
   ReadProductByStoreHandler() {
-    this.productService.FindProductsByStore(this.id).subscribe({
-      next: response => this.products = response,
-      error: (error: any) => console.log(error),
-      complete: () => console.log('complete')
-    });
+    this.productService.FindProductsByStore(this.storeId).subscribe(response => {
+      this.products = response;
+      this.products.data.forEach((a: any) => {
+        Object.assign(a,{quantity:1,total:a.price });
+      });
+    })
   }
 }
