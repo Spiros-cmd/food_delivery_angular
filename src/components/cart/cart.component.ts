@@ -1,4 +1,3 @@
-import { CdkDialogContainer } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/services/cart.service';
 import { SharedService } from 'src/shared/shared.service';
@@ -13,6 +12,7 @@ export class CartComponent implements OnInit {
   products!:any;
   productId!:number;
   grandTotal!:number;
+  total!:number;
   pId:any=[];
   pQ:any=[];
   oi:any=[];
@@ -21,6 +21,16 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProd();
+  }
+
+  increaseQuantity(product:any){
+    product.quantity = (product.quantity+1);
+  }
+  decreaseQuantity(product:any){
+    product.quantity = (product.quantity-1)
+    if(product.quantity==0){
+      this.removeItem(product)
+    }
   }
 
   setOrderItem(id:number,quantity:number){
@@ -48,9 +58,11 @@ export class CartComponent implements OnInit {
       orderItems:this.oi,
       paymentMethod:1,
       accountId:1,
-      storeId:1
+      storeId:this.shared.getId()
     }
     this.cartService.checkout(postCheckout);
+    this.emptyCart();
+    alert("Congrats...your order bla bla bla");
   }
 
   getProducts(){

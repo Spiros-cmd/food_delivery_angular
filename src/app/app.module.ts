@@ -1,3 +1,4 @@
+import { SliderTopTenComponent } from './../components/slider-top-ten/slider-top-ten.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
@@ -28,7 +29,8 @@ import { CartComponent } from '../components/cart/cart.component';
     StoreComponent,
     ProductComponent,
     LoginComponent,
-    CartComponent
+    CartComponent,
+    SliderTopTenComponent
   ],
   imports: [
     BrowserModule,

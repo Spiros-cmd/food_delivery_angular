@@ -13,7 +13,7 @@ export class SliderTopTenComponent implements OnInit {
   products:any;
 
   constructor(private productService:ProductService, private router:Router){}
-  
+
   ngOnInit(): void {
     this.findTopTenProducts();
   }
@@ -28,7 +28,7 @@ export class SliderTopTenComponent implements OnInit {
 
   findProduct(id: any) {
     this.router.navigate(
-      ['/products/'],
+      ['/product/'],
       { queryParams: { findByStore: id } }
     );
   }

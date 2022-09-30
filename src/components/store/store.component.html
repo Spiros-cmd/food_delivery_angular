@@ -1,33 +1,5 @@
 <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
 
-<!-- <div class="container" #container>
-  <div class="left" *ngIf="totalPages > 1" (click)="currentPage != 1 && changePage(-1)"
-    [ngClass]="{'disabled':currentPage === 1}"></div>
-  <div class="cards" [ngClass]="{'w-100': totalPages === 1}">
-    <div class="overflow" [ngStyle]="{'width': overflowWidth, 'left': pagePosition}">
-      <div class="card" *ngFor="let store of stores; let index = index">
-        <div *ngIf="searchStore === '' || store.name.toLowerCase().includes(searchStore)">
-          <a routerLink="/Product">
-            <img src="{{store.imgURL}}" width="330" height="170" alt="food img">
-            <div class="content">
-                <div class="name">
-                    {{store.name}}
-                </div>
-                <div class="product-item-footer">
-                    <div class="tags">
-                      {{store.storeCategory}}
-                    </div>
-                </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="right" *ngIf="totalPages > 1" (click)="currentPage != totalPages && changePage(+1)"
-    [ngClass]="{'disabled':currentPage === totalPages}"></div>
-</div> -->
-
 <ul class="sc" >
   <li *ngFor="let store of stores" >
       <div class="cont" *ngIf="searchStore === '' || store.name.toLowerCase().includes(searchStore)" >

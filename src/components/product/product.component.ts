@@ -34,6 +34,11 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(product: any) {
+    // for(let i=0;i<this.products.length;i++){
+    //   if(product.id===this.products[i].id){
+    //     this.cartService.removeOrderItem(product)
+    //   }
+    // }
     this.cartService.addToCart(product);
   }
 
