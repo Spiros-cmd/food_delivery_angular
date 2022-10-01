@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener, ViewChild, ElementRef, Input, Output }
 import { ActivatedRoute, Router } from '@angular/router';
 import { StoreService } from 'src/services/store.service';
 import { SharedService } from 'src/shared/shared.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-store',
@@ -13,6 +14,31 @@ export class StoreComponent implements OnInit {
   searchStore:string = '';
   stores: any;
   id!: number;
+
+  customOptions: OwlOptions = {
+    loop: false,
+    mouseDrag: false,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    navText: ['<i class="fa fa-caret-left" aria-hidden="true"></i>', '<i class="fa fa-caret-right" aria-hidden="true"></i>'],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 6
+      }
+    },
+    nav: true
+  }
 
   constructor(private storeService: StoreService,private shared:SharedService, private route: ActivatedRoute, private router: Router) { }
 
@@ -53,4 +79,5 @@ export class StoreComponent implements OnInit {
       'localhost:8080/products?findByStore=' + id
     );
   }
+
 }

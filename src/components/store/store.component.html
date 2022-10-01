@@ -1,23 +1,36 @@
 <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
 
-<ul class="sc" >
-  <li *ngFor="let store of stores" >
-      <div class="cont" *ngIf="searchStore === '' || store.name.toLowerCase().includes(searchStore)" >
-        <a href="" routerLink="/Product" (click)="setId(store.id)">
-          <img src="{{store.imgURL}}" width="330" height="170" alt="food img">
-          <div class="content">
-              <div class="name">
-                  {{store.name}}
-              </div>
-              <div class="product-item-footer">
-                  <div class="tags">
-                      <span>{{store.storeCategory}}</span>
-                  </div>
-              </div>
-          </div>
-      </a>
-      </div>
-  </li>
-</ul>
+<section class="stores">
+  <div class="containers">
+    <div class="bg-position">
+      <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide *ngFor="let store of stores">
+          <ul class="sc" >
+            <li>
+                <div class="cont" *ngIf="searchStore === '' || store.name.toLowerCase().includes(searchStore)" >
+                  <a href="" routerLink="/Product" (click)="setId(store.id)">
+                    <img src="{{store.imgURL}}" width="330" height="170" alt="food img">
+                    <div class="content">
+                        <div class="name">
+                            {{store.name}}
+                        </div>
+                        <div class="product-item-footer">
+                            <div class="tags">
+                                <span>{{store.storeCategory}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                </div>
+            </li>
+          </ul>
+        </ng-template>
+      </owl-carousel-o>
+
+    </div>
+  </div>
+</section>
+
+
 
 
