@@ -33,13 +33,13 @@ export class ProductComponent implements OnInit {
     this.shared.setId(this.productId);
   }
 
-  addToCart(product: any) {
+  addToCart(product: any,index:any) {
     // for(let i=0;i<this.products.length;i++){
     //   if(product.id===this.products[i].id){
-    //     this.cartService.removeOrderItem(product)
+    //     this.cartService.addToCart(product)
     //   }
     // }
-    this.cartService.addToCart(product);
+    this.cartService.addToCart(product,index);
   }
 
   ReadProductByStoreHandler() {

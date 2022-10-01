@@ -49,12 +49,16 @@ li a :hover{
 div li{
 width: fit-content;
 }
-.stores .owl-next, .stores .owl-prev{
-  background-color: #fff !important;
-  color: #222!important;
-  height: 60px!important;
-  width: 60px!important;
-  border-radius: 50%!important;
+
+.containers{
+  width: 90%;
+  margin: 0 auto;
+}
+h1{
+  font-family: inherit;
+  color: inherit;
+  font-weight: 700;
+  margin-left: 12px;
 }
 
 

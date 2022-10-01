@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
     this.cartService.getProducts()
     .subscribe(res=>{
       this.totalItem = res.length;
+      console.log(this.totalItem);
     });
   }
 

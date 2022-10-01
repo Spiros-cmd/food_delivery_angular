@@ -32,4 +32,5 @@ export class SliderTopTenComponent implements OnInit {
       { queryParams: { findByStore: id } }
     );
   }
+  
 }

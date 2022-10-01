@@ -34,7 +34,7 @@ export class StoreComponent implements OnInit {
         items: 3
       },
       940: {
-        items: 6
+        items: 5
       }
     },
     nav: true
