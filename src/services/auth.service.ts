@@ -17,7 +17,11 @@ export class AuthService {
 
   constructor(private http: HttpClient, public router: Router) { }
 
-  login(data: any) {
+  login(email:string) {
+    return this.http.get(this.url+'?email='+email)
+  }
+
+  loginn(data: any) {
     return this.http.post(this.url, data, this.httpOptions).pipe(
       tap(result => this.save_token(result)),
       catchError(error => throwError(() => `Something went wrong: ${error.message}`))
@@ -34,6 +38,7 @@ export class AuthService {
   }
 
   credentials(){
-    return this.http.get(this.url)
+    return this.http.get<any>(this.url)
+
   }
 }
