@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -11,8 +11,6 @@ export class CartService {
   orderItemsList : any=[];
   productList = new BehaviorSubject<any>([]);
   private URL = environment.baseURL + "/orders";
-
-  // smth:any = {orderItems:[],paymentMethod:1,accountId:1,storeId:1};
 
   httpOptions = {
     headers: new HttpHeaders({'content-Type1':'application/json'})
@@ -29,17 +27,45 @@ export class CartService {
     this.productList.next(product);
   }
 
-  addToCart(product:any){
-    this.orderItemsList.push(product);
-    this.productList.next(this.orderItemsList);
+  increaseQuantity(product:any){
+    product.quantity++;
+    this.productList.next(product);
     this.getTotalPrice();
+  }
+  decreaseQuantity(product:any){
+    product.quantity--;
+    this.updateTotalPrice()
+    if(product.quantity==0){
+      this.removeOrderItem(product)
+    }
+  }
+
+  addToCart(product:any,idx:any){
+    const found = this.orderItemsList.find(
+      (item: any) => JSON.stringify(item)===JSON.stringify(product)
+    );
+    if(found){
+      this.orderItemsList[idx].quantity++;
+    }else{
+      this.orderItemsList.push(product);
+      this.productList.next(this.orderItemsList);
+      this.getTotalPrice();
+    }
     console.log(this.orderItemsList);
   }
 
   getTotalPrice():number{
     let grandTotal = 0;
     this.orderItemsList.map((a:any)=>{
-      grandTotal += (a.total*a.quantity);
+      grandTotal += (a.total);
+    });
+    return grandTotal;
+  }
+
+  updateTotalPrice():number{
+    let grandTotal = 0;
+    this.orderItemsList.forEach((oi:any) => {
+      grandTotal +=(oi.total*oi.quantity)
     });
     return grandTotal;
   }
@@ -48,6 +74,7 @@ export class CartService {
     this.orderItemsList.map((a:any, index:any)=>{
       if(product.id === a.id){
         this.orderItemsList.splice(index,1)
+        this.updateTotalPrice()
       }
     });
     this.productList.next(this.orderItemsList)

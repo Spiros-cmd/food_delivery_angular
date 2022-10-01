@@ -24,13 +24,10 @@ export class CartComponent implements OnInit {
   }
 
   increaseQuantity(product:any){
-    product.quantity = (product.quantity+1);
+    this.cartService.increaseQuantity(product);
   }
   decreaseQuantity(product:any){
-    product.quantity = (product.quantity-1)
-    if(product.quantity==0){
-      this.removeItem(product)
-    }
+    this.cartService.decreaseQuantity(product);
   }
 
   setOrderItem(id:number,quantity:number){

@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog'
 import { AuthService } from 'src/services/auth.service';
 import { CartComponent } from '../components/cart/cart.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CartComponent } from '../components/cart/cart.component';
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CarouselModule 
   ],
   providers: [ProductService,StoreService,AuthService],
   bootstrap: [AppComponent]
