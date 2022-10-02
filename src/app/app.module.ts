@@ -19,6 +19,7 @@ import {MatDialogModule} from '@angular/material/dialog'
 import { AuthService } from 'src/services/auth.service';
 import { CartComponent } from '../components/cart/cart.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CategoryDropComponent } from 'src/components/category-drop/category-drop.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     ProductComponent,
     LoginComponent,
     CartComponent,
-    SliderTopTenComponent
+    SliderTopTenComponent,
+    CategoryDropComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     BrowserAnimationsModule,
     MatDialogModule,
     ReactiveFormsModule,
-    CarouselModule 
+    CarouselModule
   ],
   providers: [ProductService,StoreService,AuthService],
   bootstrap: [AppComponent]
