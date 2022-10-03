@@ -19,7 +19,11 @@ import {MatDialogModule} from '@angular/material/dialog'
 import { AuthService } from 'src/services/auth.service';
 import { CartComponent } from '../components/cart/cart.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+<<<<<<< HEAD
 import { AccountComponent } from '../components/account/account.component';
+=======
+import { CategoryDropComponent } from 'src/components/category-drop/category-drop.component';
+>>>>>>> 448d7fcd9303b12175607cb7929edc5b5aa5a442
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { AccountComponent } from '../components/account/account.component';
     LoginComponent,
     CartComponent,
     SliderTopTenComponent,
+<<<<<<< HEAD
     AccountComponent
+=======
+    CategoryDropComponent
+>>>>>>> 448d7fcd9303b12175607cb7929edc5b5aa5a442
   ],
   imports: [
     BrowserModule,
