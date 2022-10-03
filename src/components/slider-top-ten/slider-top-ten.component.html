@@ -1,21 +1,38 @@
 
-<body>
-<div class="container">
-  <h1>Top 10 Products</h1>
-  <div class="row">
-    <div class="col-md-1 mx-auto my-2" *ngFor="let product of products.data">
-      <a class="nav-link" routerLink="localhost:8080/products?findByStore" (click)="findProduct(product.id)"></a>
-      <div class="image">
-        <img src="https://burgerfest.gr/wp-content/uploads/2022/09/Artboard-1-copy-300x300.png" alt="food img">
-      </div>
-      <div class="name-category">
-        <span class="name">{{product.name}} </span>
-        <span class="category">{{product.productCategory}}</span>
-       </div>
-       <div class="price">
-        {{product.price | currency: 'EUR'}}
-       </div>
+<section class="stores">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="containers">
+    <h1>10 πιο δημοφιλή προϊόντα!</h1>
+    <div class="bg-position">
+      <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide *ngFor="let product of products.data">
+          <ul class="sc">
+            <li>
+              <a href="" routerLink="/Product" (click)="setId(product.store.id)">
+                  <img src="https://www.argiro.gr/wp-content/uploads/2016/04/BURGER-ME-AVGO.jpg" width="330" height="170" alt="food img">
+                  <div class="content">
+                    <div class="name">
+                      {{product.name}}<br>
+                      {{product.productCategory}}
+                    </div>
+                    <div class="product-item-footer">
+                      <div class="tags">
+                        <span>{{product.storeCategory}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+            </li>
+          </ul>
+        </ng-template>
+      </owl-carousel-o>
     </div>
   </div>
-</div>
-</body>
+</section>
