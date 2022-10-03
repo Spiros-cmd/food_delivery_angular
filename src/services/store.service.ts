@@ -19,6 +19,16 @@ export class StoreService {
     return this.http.get(this.URL);
   }
 
+  storesByName(name:string){
+    let params = new HttpParams().set("name", name);
+    return this.http.get(this.URL,{params})
+  }
+
+  storesByCategory(category:string){
+    let params = new HttpParams().set("storeCategory", category.toUpperCase());
+    return this.http.get(this.URL+'/storeCategory' ,{params});
+  }
+
   mostPopularStoresByCategory(category:string){
     let params = new HttpParams().set("storeCategory", category.toUpperCase());
     return this.http.get(this.URL+'/popular',{params});

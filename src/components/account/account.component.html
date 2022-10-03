@@ -1,24 +1,39 @@
-<div class="menu">
-  <span><a href="#">Account</a></span>
+<div class="orders">
+  <table class="table table-responsive table-hover table-light table-bordered ">
+    <thead>
+      <tr class="text-center">
+        <th>User</th>
+        <th>orderItems</th>
+        <th>payAmount</th>
+        <th>paymentMethod</th>
+        <th>submitDate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders.data">
+        <td class="text-center">{{account.email}}</td>
+        <td>
+          <table class="table table-light">
+            <thead>
+              <tr>
+                <th>product</th>
+                <th>quantity</th>
+                <th>price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let oi of order.orderItems">
+                <td>{{oi.product.name}}</td>
+                <td>{{oi.quantity}} τμχ</td>
+                <td>{{oi.product.price}}&euro;/τμχ</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td class="text-center">{{order.payAmount}}&euro;</td>
+        <td class="text-center">{{order.paymentMethod}}</td>
+        <td class="text-center">{{order.submitDate | date:'short'}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>orderItems</th>
-      <th>payAmount</th>
-      <th>paymentMethod</th>
-      <th>submitDate</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let order of orders.data">
-      <td>{{account.email}}</td>
-      <td>{{order.orderItems}}</td>
-      <td>{{order.payAmount}}</td>
-      <td>{{order.paymentMethod}}</td>
-      <td>{{order.submitDate}}</td>
-    </tr>
-  </tbody>
-</table>

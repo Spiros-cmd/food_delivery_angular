@@ -1,13 +1,18 @@
 <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
 
-<div>
-  <button class="btn btn-danger" (click)="getMostPopularStoresByCategory('FOOD')">
-    Most Popular Stores By Category
-  </button>
+<div class="category-buttons">
+  <div class="dropdown">
+    <button class="btn btn-danger">Most Popular Stores By Category</button>
+    <div class="dropdown-content">
+      <a href="" (click)="$event.preventDefault()" (click)="getMostPopularStoresByCategory('FOOD')">Food</a>
+      <a href="" (click)="$event.preventDefault()" (click)="getMostPopularStoresByCategory('GROCERY')">Groceries</a>
+      <a href="">Drink</a>
+    </div>
   <button class="btn btn-danger"  (click)="getMostPopularStoresByCategory('GROCERY')">
     Most Popular Stores
   </button>
 </div>
+
 
 <div [hidden]="isShowDiv">
   <ul class="sc">
@@ -31,7 +36,7 @@
   </ul>
 </div>
 
-<section class="stores">
+<section class="stores" [hidden]="!isShowDiv">
   <div class="containers">
     <h1>Συνεργαζόμενα Καταστήματα</h1>
     <div class="bg-position">

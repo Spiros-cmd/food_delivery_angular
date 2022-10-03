@@ -30,11 +30,9 @@ export class CartService {
   increaseQuantity(product:any){
     product.quantity++;
     this.productList.next(product);
-    this.getTotalPrice();
   }
   decreaseQuantity(product:any){
     product.quantity--;
-    this.updateTotalPrice()
     if(product.quantity==0){
       this.removeOrderItem(product)
     }

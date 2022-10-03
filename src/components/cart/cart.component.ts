@@ -24,7 +24,7 @@ export class CartComponent implements OnInit {
   }
 
   increaseQuantity(product:any){
-    this.cartService.increaseQuantity(product);
+    product.quantity++;
   }
   decreaseQuantity(product:any){
     this.cartService.decreaseQuantity(product);
@@ -54,7 +54,7 @@ export class CartComponent implements OnInit {
     let postCheckout={
       orderItems:this.oi,
       paymentMethod:1,
-      accountId:3,
+      accountId:1,
       storeId:this.shared.getId()
     }
     this.cartService.checkout(postCheckout);

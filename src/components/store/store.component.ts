@@ -16,6 +16,7 @@ export class StoreComponent implements OnInit {
   stores: any;
   id!: number;
   PopularStoresByCategory:any;
+  storeByName:any;
 
   isShowDiv = false;
   food:string='FOOD';
@@ -79,6 +80,14 @@ export class StoreComponent implements OnInit {
   ReadStoreHandler() {
     this.storeService.getStores().subscribe({
       next: response => this.stores = response,
+      error: (error: any) => console.log(error),
+      complete: () => console.log('complete')
+    });
+  }
+
+  GetStoreByName(name:string){
+    this.storeService.storesByName(name).subscribe({
+      next: response => this.storeByName = response,
       error: (error: any) => console.log(error),
       complete: () => console.log('complete')
     });
