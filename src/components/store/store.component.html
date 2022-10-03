@@ -1,68 +1,114 @@
-<app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+<div *ngIf="stores && stores.length; else NoData">
+  <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
 
-<div class="category-buttons">
-  <div class="dropdown">
-    <button class="btn btn-danger">Most Popular Stores By Category</button>
-    <div class="dropdown-content">
-      <a href="" (click)="$event.preventDefault()" (click)="getMostPopularStoresByCategory('FOOD')">Food</a>
-      <a href="" (click)="$event.preventDefault()" (click)="getMostPopularStoresByCategory('GROCERY')">Groceries</a>
-      <a href="">Drink</a>
+  <div class="category-buttons">
+    <div class="dropdown">
+      <button class="btn btn-danger">Most Popular Stores By Category</button>
+      <div class="dropdown-content">
+        <a href="" (click)="$event.preventDefault()" (click)="getMostPopularStoresByCategory('FOOD')">Food</a>
+        <a href="" (click)="$event.preventDefault()" (click)="getMostPopularStoresByCategory('GROCERY')">Groceries</a>
+        <a href="">Drink</a>
+      </div>
     </div>
-  <button class="btn btn-danger"  (click)="getMostPopularStoresByCategory('GROCERY')">
-    Most Popular Stores
-  </button>
-</div>
+    <button class="btn btn-danger" (click)="getMostPopularStoresByCategory('GROCERY')">
+      Most Popular Stores
+    </button>
+  </div>
 
 
-<div [hidden]="isShowDiv">
-  <ul class="sc">
-    <li *ngFor="let store of PopularStoresByCategory.data">
-      <div class="cont">
-        <a href="" routerLink="/Product" (click)="setId(store.id)">
-          <img src="{{store.imgURL}}" width="330" height="170" alt="food img">
-          <div class="content">
-            <div class="name">
-              {{store.name}}
-            </div>
-            <div class="product-item-footer">
-              <div class="tags">
-                <span>{{store.storeCategory}}</span>
+  <div [hidden]="isShowDiv">
+    <ul class="sc">
+      <li *ngFor="let store of PopularStoresByCategory.data">
+        <div class="cont">
+          <a href="" routerLink="/Product" (click)="setId(store.id)">
+            <img src="{{store.imgURL}}" width="330" height="170" alt="food img">
+            <div class="content">
+              <div class="name">
+                {{store.name}}
+              </div>
+              <div class="product-item-footer">
+                <div class="tags">
+                  <span>{{store.storeCategory}}</span>
+                </div>
               </div>
             </div>
-          </div>
-        </a>
-      </div>
-    </li>
-  </ul>
-</div>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
 
-<section class="stores" [hidden]="!isShowDiv">
-  <div class="containers">
-    <h1>Συνεργαζόμενα Καταστήματα</h1>
-    <div class="bg-position">
-      <owl-carousel-o [options]="customOptions">
-        <ng-template carouselSlide *ngFor="let store of stores">
-          <ul class="sc">
-            <li>
-              <div class="cont" *ngIf="searchStore === '' || store.name.toLowerCase().includes(searchStore)">
-                <a href="" routerLink="/Product" (click)="setId(store.id)">
-                  <img src="{{store.imgURL}}" width="330" height="170" alt="food img">
-                  <div class="content">
-                    <div class="name">
-                      {{store.name}}
-                    </div>
-                    <div class="product-item-footer">
-                      <div class="tags">
-                        <span>{{store.storeCategory}}</span>
+  <section class="stores" [hidden]="!isShowDiv">
+    <div class="containers">
+      <h1>Συνεργαζόμενα Καταστήματα</h1>
+      <div class="bg-position">
+        <owl-carousel-o [options]="customOptions">
+          <ng-template carouselSlide *ngFor="let store of stores">
+            <ul class="sc">
+              <li>
+                <div class="cont" *ngIf="searchStore === '' || store.name.toLowerCase().includes(searchStore)">
+                  <a href="" routerLink="/Product" (click)="setId(store.id)">
+                    <img src="{{store.imgURL}}" width="330" height="170" alt="food img">
+                    <div class="content">
+                      <div class="name">
+                        {{store.name}}
+                      </div>
+                      <div class="product-item-footer">
+                        <div class="tags">
+                          <span>{{store.storeCategory}}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </a>
-              </div>
-            </li>
-          </ul>
-        </ng-template>
-      </owl-carousel-o>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+    </div>
+  </section>
+
+  <app-slider-top-ten></app-slider-top-ten>
+
+
+  <div class="content">
+    <div class="col-lg-4 mb-7 mr-auto">
+      <img src="assets/3f.png" alt="">
+      <h3 class="d-none d-md-block mb-0">
+        Δουλεύεις και θες καφέ; Σπίτι μεσημέρι και ποιος μαγειρεύει; Είναι Σαββατοκύριακο και δε θες να σηκωθείς από το
+        κρεβάτι αλλά το ψυγείο είναι άδειο γιατί δεν πήγες supermarket. Έρχεται η παρέα και χρειάζεσαι μια κάβα ΤΩΡΑ! Γι'
+        αυτό υπάρχει το efood. Ό,τι θέλεις, όποτε το θέλεις - το'χουμε! Παράγγειλε επιλέγοντας ανάμεσα σε 20.000 καταστήματα
+        και 100 πόλεις! Αφού το ξέρεις - το efood είναι το delivery στην Ελλάδα! </h3>
     </div>
   </div>
-</section>
+</div>
+
+<ng-template #NoData>
+  <div>
+    <h1>Error 404</h1>
+    <h1>Page Not Found</h1>
+  </div>
+</ng-template>
+
+
+<!-- <ul class="sc">
+  <li *ngFor="let store of PopularStoresGeneral.data">
+    <div class="cont" >
+      <a href="" routerLink="/Product" (click)="setId(store.id)">
+        <img src="{{store.imgURL}}" width="330" height="170" alt="food img">
+        <div class="content">
+          <div class="name">
+            {{store.name}}
+          </div>
+          <div class="product-item-footer">
+            <div class="tags">
+              <span>{{store.storeCategory}}</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </li>
+</ul> -->
+

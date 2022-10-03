@@ -16,6 +16,7 @@ export class StoreComponent implements OnInit {
   stores: any;
   id!: number;
   PopularStoresByCategory:any;
+  PopularStoresGeneral:any;
   storeByName:any;
 
   isShowDiv = false;
@@ -53,6 +54,7 @@ export class StoreComponent implements OnInit {
   ngOnInit(): void {
     this.ReadStoreHandler();
     this.getMostPopularStoresByCategory(this.food);
+    this.PopularStoresGeneral();
   }
 
   setId(id: number){
@@ -72,6 +74,15 @@ export class StoreComponent implements OnInit {
     this.isShowDiv = !this.isShowDiv;
     this.storeService.mostPopularStoresByCategory(category).subscribe({
       next: response => this.PopularStoresByCategory = response,
+      error: (error: any) => console.log(error),
+      complete: () => console.log('complete')
+    });
+  }
+
+  getMostPopularStoresInGeneral() {
+    this.isShowDiv = !this.isShowDiv;
+    this.storeService.mostPopularStoresInGeneral().subscribe({
+      next: response => this.PopularStoresGeneral = response,
       error: (error: any) => console.log(error),
       complete: () => console.log('complete')
     });

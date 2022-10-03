@@ -21,6 +21,7 @@ import { CartComponent } from '../components/cart/cart.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AccountComponent } from '../components/account/account.component';
 import { CategoryDropComponent } from 'src/components/category-drop/category-drop.component';
+import { PageNotFoundComponent } from '../components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { CategoryDropComponent } from 'src/components/category-drop/category-dro
     CartComponent,
     SliderTopTenComponent,
     AccountComponent,
-    CategoryDropComponent
+    CategoryDropComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

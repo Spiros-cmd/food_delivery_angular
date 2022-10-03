@@ -33,4 +33,8 @@ export class StoreService {
     let params = new HttpParams().set("storeCategory", category.toUpperCase());
     return this.http.get(this.URL+'/popular',{params});
   }
+
+  mostPopularStoresInGeneral(){
+    return this.http.get(this.URL+'/popularGeneral')
+  }
 }

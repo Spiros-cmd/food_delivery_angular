@@ -43,7 +43,7 @@ export class CartComponent implements OnInit {
     this.cartService.removeAllFromCart();
   }
 
-  checkout(products:any){
+  checkout(products:any,paymentMethod:string){
     products.forEach((p:any) => {
       let orderItems={
         productId:p.id,
@@ -53,7 +53,7 @@ export class CartComponent implements OnInit {
     });
     let postCheckout={
       orderItems:this.oi,
-      paymentMethod:1,
+      paymentMethod:paymentMethod,
       accountId:1,
       storeId:this.shared.getId()
     }
