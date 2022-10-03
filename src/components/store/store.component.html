@@ -1,12 +1,41 @@
 <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
 
+<div>
+  <button class="btn btn-danger" (click)="getMostPopularStoresByCategory('FOOD')">
+    Most Popular Stores By Category
+  </button>
+  <button class="btn btn-danger"  (click)="getMostPopularStoresByCategory('GROCERY')">
+    Most Popular Stores
+  </button>
+</div>
+
+<div [hidden]="isShowDiv">
+  <ul class="sc">
+    <li *ngFor="let store of PopularStoresByCategory.data">
+      <div class="cont">
+        <a href="" routerLink="/Product" (click)="setId(store.id)">
+          <img src="{{store.imgURL}}" width="330" height="170" alt="food img">
+          <div class="content">
+            <div class="name">
+              {{store.name}}
+            </div>
+            <div class="product-item-footer">
+              <div class="tags">
+                <span>{{store.storeCategory}}</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>
+
 <section class="stores">
   <div class="containers">
     <h1>Συνεργαζόμενα Καταστήματα</h1>
     <div class="bg-position">
-
       <owl-carousel-o [options]="customOptions">
-
         <ng-template carouselSlide *ngFor="let store of stores">
           <ul class="sc">
             <li>
@@ -32,5 +61,3 @@
     </div>
   </div>
 </section>
-
-

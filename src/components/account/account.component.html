@@ -1,0 +1,24 @@
+<div class="menu">
+  <span><a href="#">Account</a></span>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>orderItems</th>
+      <th>payAmount</th>
+      <th>paymentMethod</th>
+      <th>submitDate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders.data">
+      <td>{{account.email}}</td>
+      <td>{{order.orderItems}}</td>
+      <td>{{order.payAmount}}</td>
+      <td>{{order.paymentMethod}}</td>
+      <td>{{order.submitDate}}</td>
+    </tr>
+  </tbody>
+</table>

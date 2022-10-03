@@ -54,7 +54,7 @@ export class CartComponent implements OnInit {
     let postCheckout={
       orderItems:this.oi,
       paymentMethod:1,
-      accountId:1,
+      accountId:3,
       storeId:this.shared.getId()
     }
     this.cartService.checkout(postCheckout);
