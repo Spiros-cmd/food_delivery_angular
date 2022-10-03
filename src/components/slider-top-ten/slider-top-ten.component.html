@@ -16,10 +16,11 @@
           <ul class="sc">
             <li>
               <a href="" routerLink="/Product" (click)="setId(product.store.id)">
-                  <img src="{{product.imgURL}}" width="330" height="170" alt="food img">
+                  <img src="https://www.argiro.gr/wp-content/uploads/2016/04/BURGER-ME-AVGO.jpg" width="330" height="170" alt="food img">
                   <div class="content">
                     <div class="name">
-                      {{product.name}}
+                      {{product.name}}<br>
+                      {{product.productCategory}}
                     </div>
                     <div class="product-item-footer">
                       <div class="tags">
