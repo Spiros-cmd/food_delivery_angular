@@ -10,16 +10,27 @@
         <a href="">Drink</a>
       </div>
     </div>
-    <button class="btn btn-danger" (click)="getMostPopularStoresByCategory('GROCERY')">
+    <button class="btn btn-danger" style="margin-left: 10px;" (click)="getMostPopularStoresByCategory('GROCERY')">
       Most Popular Stores
     </button>
   </div>
 
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <div class="dropdown-content">
+      <button type="button" class="btn btn-danger" (click)="$event.preventDefault()"
+        (click)="getMostPopularStoresByCategory('FOOD')">Food</button>
+      <button type="button" class="btn btn-danger" (click)="$event.preventDefault()"
+        (click)="getMostPopularStoresByCategory('GROCERY')">Groceries</button>
+    </div>
 
-  <div [hidden]="isShowDiv">
+  </div>
+
+
+  <div [hidden]="isShowDiv" class="byCategory">
+    <h1>Most Popular Stores By Category</h1>
     <ul class="sc">
       <li *ngFor="let store of PopularStoresByCategory.data">
-        <div class="cont">
+        <div class="cont" *ngIf="searchStore === '' || store.name.toLowerCase().includes(searchStore)">
           <a href="" routerLink="/Product" (click)="setId(store.id)">
             <img src="{{store.imgURL}}" width="330" height="170" alt="food img">
             <div class="content">
@@ -72,13 +83,15 @@
   <app-slider-top-ten></app-slider-top-ten>
 
 
-  <div class="content">
-    <div class="col-lg-4 mb-7 mr-auto">
+  <div class="par">
+    <div class="col-lg-4">
       <img src="assets/3f.png" alt="">
-      <h3 class="d-none d-md-block mb-0">
+      <h3 class="d-none d-md-block mb-5 ">
         Δουλεύεις και θες καφέ; Σπίτι μεσημέρι και ποιος μαγειρεύει; Είναι Σαββατοκύριακο και δε θες να σηκωθείς από το
-        κρεβάτι αλλά το ψυγείο είναι άδειο γιατί δεν πήγες supermarket. Έρχεται η παρέα και χρειάζεσαι μια κάβα ΤΩΡΑ! Γι'
-        αυτό υπάρχει το efood. Ό,τι θέλεις, όποτε το θέλεις - το'χουμε! Παράγγειλε επιλέγοντας ανάμεσα σε 20.000 καταστήματα
+        κρεβάτι αλλά το ψυγείο είναι άδειο γιατί δεν πήγες supermarket. Έρχεται η παρέα και χρειάζεσαι μια κάβα ΤΩΡΑ!
+        Γι'
+        αυτό υπάρχει το efood. Ό,τι θέλεις, όποτε το θέλεις - το'χουμε! Παράγγειλε επιλέγοντας ανάμεσα σε 20.000
+        καταστήματα
         και 100 πόλεις! Αφού το ξέρεις - το efood είναι το delivery στην Ελλάδα! </h3>
     </div>
   </div>
@@ -111,4 +124,3 @@
     </div>
   </li>
 </ul> -->
-

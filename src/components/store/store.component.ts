@@ -22,6 +22,7 @@ export class StoreComponent implements OnInit {
   isShowDiv = false;
   food:string='FOOD';
   grocery:string='GROCERY';
+  sk:string='';
 
 
   customOptions: OwlOptions = {
@@ -116,5 +117,4 @@ export class StoreComponent implements OnInit {
       'localhost:8080/products?findByStore=' + id
     );
   }
-
 }
