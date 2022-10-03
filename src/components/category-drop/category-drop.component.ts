@@ -8,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryDropComponent implements OnInit {
 
-  constructor(service:StoreService) { }
+  storesByCategory:any;
+
+  constructor(private storeService:StoreService) { }
 
   ngOnInit(): void {
+    this.getStoresByCategory('FOOD')
+  }
+
+  getStoresByCategory(category:string){
+    this.storeService.storesByName(category).subscribe({
+      next: response => this.storesByCategory = response,
+      error: (error: any) => console.log(error),
+      complete: () => console.log('complete')
+    });
   }
 
 }

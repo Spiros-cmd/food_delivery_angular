@@ -41,4 +41,8 @@ export class AuthService {
     return this.http.get<any>(this.url)
 
   }
+
+  accountById(id:number){
+    return this.http.get(this.url+`/${id}`)
+  }
 }

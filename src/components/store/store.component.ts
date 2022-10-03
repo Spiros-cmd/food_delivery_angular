@@ -1,8 +1,9 @@
-import { Component, OnInit, HostListener, ViewChild, ElementRef, Input, Output } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StoreService } from 'src/services/store.service';
 import { SharedService } from 'src/shared/shared.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+
 
 @Component({
   selector: 'app-store',
@@ -14,6 +15,15 @@ export class StoreComponent implements OnInit {
   searchStore:string = '';
   stores: any;
   id!: number;
+  PopularStoresByCategory:any;
+  PopularStoresGeneral:any;
+  storeByName:any;
+
+  isShowDiv = false;
+  food:string='FOOD';
+  grocery:string='GROCERY';
+  sk:string='';
+
 
   customOptions: OwlOptions = {
     loop: false,
@@ -34,7 +44,7 @@ export class StoreComponent implements OnInit {
         items: 3
       },
       940: {
-        items: 5
+        items: 4
       }
     },
     nav: true
@@ -44,6 +54,8 @@ export class StoreComponent implements OnInit {
 
   ngOnInit(): void {
     this.ReadStoreHandler();
+    this.getMostPopularStoresByCategory(this.food);
+    this.PopularStoresGeneral();
   }
 
   setId(id: number){
@@ -59,9 +71,35 @@ export class StoreComponent implements OnInit {
     this.searchStore = searchValue;
   }
 
+  getMostPopularStoresByCategory(category:string) {
+    this.isShowDiv = !this.isShowDiv;
+    this.storeService.mostPopularStoresByCategory(category).subscribe({
+      next: response => this.PopularStoresByCategory = response,
+      error: (error: any) => console.log(error),
+      complete: () => console.log('complete')
+    });
+  }
+
+  getMostPopularStoresInGeneral() {
+    this.isShowDiv = !this.isShowDiv;
+    this.storeService.mostPopularStoresInGeneral().subscribe({
+      next: response => this.PopularStoresGeneral = response,
+      error: (error: any) => console.log(error),
+      complete: () => console.log('complete')
+    });
+  }
+
   ReadStoreHandler() {
     this.storeService.getStores().subscribe({
       next: response => this.stores = response,
+      error: (error: any) => console.log(error),
+      complete: () => console.log('complete')
+    });
+  }
+
+  GetStoreByName(name:string){
+    this.storeService.storesByName(name).subscribe({
+      next: response => this.storeByName = response,
       error: (error: any) => console.log(error),
       complete: () => console.log('complete')
     });
@@ -79,5 +117,4 @@ export class StoreComponent implements OnInit {
       'localhost:8080/products?findByStore=' + id
     );
   }
-
 }

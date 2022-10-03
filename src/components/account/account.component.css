@@ -1,0 +1,13 @@
+.orders{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.noOrders{
+  display: block;
+  justify-content: center;
+  margin-top: 100px;
+  margin-left: 750px;
+  margin-bottom: 100px;
+}
